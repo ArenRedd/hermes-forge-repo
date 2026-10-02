@@ -1,0 +1,241 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <!-- Hermes Agent Architecture Diagram -->
+  <defs>
+    <style>
+      .box { fill: #1e1e2e; stroke: #585b70; stroke-width: 2; rx: 8; }
+      .box-primary { fill: #25253a; stroke: #89b4fa; stroke-width: 2; rx: 8; }
+      .box-accent { fill: #1e1e2e; stroke: #f9e2af; stroke-width: 2; rx: 8; }
+      .text-title { font: bold 14px 'JetBrains Mono', monospace; fill: #cdd6f4; }
+      .text-body { font: 11px 'JetBrains Mono', monospace; fill: #bac2de; }
+      .text-small { font: 10px 'JetBrains Mono', monospace; fill: #9399b2; }
+      .arrow { stroke: #6c7086; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-primary { stroke: #89b4fa; stroke-width: 2; fill: none; marker-end: url(#arrowhead-primary); }
+      .label { font: 10px 'JetBrains Mono', monospace; fill: #a6adc8; }
+      .badge { font: bold 9px 'JetBrains Mono', monospace; fill: #1e1e2e; }
+      .badge-bg { fill: #f9e2af; rx: 4; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6c7086"/>
+    </marker>
+    <marker id="arrowhead-primary" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#89b4fa"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#181825"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" class="text-title" style="font-size:18px;">Hermes Agent Architecture (v0.21.5)</text>
+  <text x="600" y="60" text-anchor="middle" class="text-small">Nous Research — Open-Source Autonomous Agent Framework</text>
+
+  <!-- LAYER 1: USER INTERFACE -->
+  <g id="layer-ui">
+    <rect x="50" y="90" width="350" height="180" class="box-primary"/>
+    <text x="225" y="115" text-anchor="middle" class="text-title">USER INTERFACE</text>
+    
+    <rect x="70" y="135" width="150" height="40" class="box" rx="6"/>
+    <text x="145" y="158" text-anchor="middle" class="text-body">CLI / TUI</text>
+    <text x="145" y="170" text-anchor="middle" class="text-small">hermes, hermes -z</text>
+
+    <rect x="230" y="135" width="150" height="40" class="box" rx="6"/>
+    <text x="305" y="158" text-anchor="middle" class="text-body">Slash Commands</text>
+    <text x="305" y="170" text-anchor="middle" class="text-small">/model, /skill, /toolset</text>
+
+    <rect x="70" y="195" width="150" height="40" class="box" rx="6"/>
+    <text x="145" y="218" text-anchor="middle" class="text-body">Messaging</text>
+    <text x="145" y="230" text-anchor="middle" class="text-small">Telegram, Discord, Slack</text>
+
+    <rect x="230" y="195" width="150" height="40" class="box" rx="6"/>
+    <text x="305" y="218" text-anchor="middle" class="text-body">API / ACP</text>
+    <text x="305" y="230" text-anchor="middle" class="text-small">REST, Agent Client Protocol</text>
+  </g>
+
+  <!-- LAYER 2: CORE RUNTIME -->
+  <g id="layer-core">
+    <rect x="450" y="90" width="300" height="380" class="box-primary"/>
+    <text x="600" y="115" text-anchor="middle" class="text-title">CORE RUNTIME</text>
+
+    <rect x="470" y="135" width="260" height="50" class="box" rx="6"/>
+    <text x="600" y="165" text-anchor="middle" class="text-body">Agent Loop (Rust)</text>
+    <text x="600" y="178" text-anchor="middle" class="text-small">Planning → Tool Use → Response</text>
+
+    <rect x="470" y="205" width="120" height="50" class="box" rx="6"/>
+    <text x="530" y="235" text-anchor="middle" class="text-body">Model Router</text>
+    <text x="530" y="248" text-anchor="middle" class="text-small">40+ providers</text>
+
+    <rect x="610" y="205" width="120" height="50" class="box" rx="6"/>
+    <text x="670" y="235" text-anchor="middle" class="text-body">Tool Registry</text>
+    <text x="670" y="248" text-anchor="middle" class="text-small">100+ tools</text>
+
+    <rect x="470" y="275" width="120" height="50" class="box" rx="6"/>
+    <text x="530" y="305" text-anchor="middle" class="text-body">Skill Engine</text>
+    <text x="530" y="318" text-anchor="middle" class="text-small">58 bundled</text>
+
+    <rect x="610" y="275" width="120" height="50" class="box" rx="6"/>
+    <text x="670" y="305" text-anchor="middle" class="text-body">Memory Sys</text>
+    <text x="670" y="318" text-anchor="middle" class="text-small">FTS5 + Honcho</text>
+
+    <rect x="470" y="345" width="120" height="50" class="box" rx="6"/>
+    <text x="530" y="375" text-anchor="middle" class="text-body">Scheduler</text>
+    <text x="530" y="388" text-anchor="middle" class="text-small">Cron + Kanban</text>
+
+    <rect x="610" y="345" width="120" height="50" class="box" rx="6"/>
+    <text x="670" y="375" text-anchor="middle" class="text-body">Delegation</text>
+    <text x="670" y="388" text-anchor="middle" class="text-small">delegate_task</text>
+
+    <rect x="470" y="415" width="260" height="40" class="box-accent" rx="6"/>
+    <text x="600" y="440" text-anchor="middle" class="text-body">Security: Tirith Scanner + Sandbox + Approvals</text>
+  </g>
+
+  <!-- LAYER 3: EXTERNAL INTEGRATIONS -->
+  <g id="layer-ext">
+    <rect x="800" y="90" width="350" height="380" class="box-primary"/>
+    <text x="975" y="115" text-anchor="middle" class="text-title">EXTERNAL INTEGRATIONS</text>
+
+    <!-- Providers -->
+    <rect x="820" y="135" width="310" height="60" class="box" rx="6"/>
+    <text x="975" y="155" text-anchor="middle" class="text-title" style="font-size:12px;">LLM PROVIDERS (~40)</text>
+    <text x="975" y="175" text-anchor="middle" class="text-small">OpenRouter, Anthropic, OpenAI, Google, xAI, Mistral, Cohere, Local (Ollama, llama.cpp), Custom</text>
+
+    <!-- Toolsets -->
+    <rect x="820" y="215" width="150" height="80" class="box" rx="6"/>
+    <text x="895" y="235" text-anchor="middle" class="text-body">CORE TOOLSETS</text>
+    <text x="895" y="250" text-anchor="middle" class="text-small">coding, debugging, safe</text>
+    <text x="895" y="265" text-anchor="middle" class="text-small">research, devops, creative</text>
+    <text x="895" y="280" text-anchor="middle" class="text-small">personal, browser, web</text>
+
+    <rect x="980" y="215" width="150" height="80" class="box" rx="6"/>
+    <text x="1055" y="235" text-anchor="middle" class="text-body">PLATFORM TOOLSETS</text>
+    <text x="1055" y="250" text-anchor="middle" class="text-small">28+ platforms</text>
+    <text x="1055" y="265" text-anchor="middle" class="text-small">GitHub, GitLab, AWS, GCP</text>
+    <text x="1055" y="280" text-anchor="middle" class="text-small">Docker, Kubernetes, etc.</text>
+
+    <!-- MCP/Plugins -->
+    <rect x="820" y="315" width="310" height="70" class="box" rx="6"/>
+    <text x="975" y="335" text-anchor="middle" class="text-body">MCP SERVERS + PLUGINS</text>
+    <text x="975" y="350" text-anchor="middle" class="text-small">14 built-in servers • stdio transport • Plugin system • ACP proxy</text>
+    <text x="975" y="365" text-anchor="middle" class="text-small">Hermes as MCP server (stdio) • Egress control</text>
+
+    <!-- Gateway Platforms -->
+    <rect x="820" y="405" width="310" height="55" class="box" rx="6"/>
+    <text x="975" y="425" text-anchor="middle" class="text-body">GATEWAY PLATFORMS (28)</text>
+    <text x="975" y="440" text-anchor="middle" class="text-small">Telegram, Discord, Slack, WhatsApp, Signal, Email, Matrix, Webhook, API, Local, File + more</text>
+  </g>
+
+  <!-- LAYER 4: PERSISTENCE & INFRASTRUCTURE -->
+  <g id="layer-infra">
+    <rect x="50" y="300" width="350" height="250" class="box-primary"/>
+    <text x="225" y="325" text-anchor="middle" class="text-title">PERSISTENCE & INFRASTRUCTURE</text>
+
+    <rect x="70" y="350" width="140" height="60" class="box" rx="6"/>
+    <text x="140" y="375" text-anchor="middle" class="text-body">State DB</text>
+    <text x="140" y="390" text-anchor="middle" class="text-small">SQLite + WAL</text>
+    <text x="140" y="405" text-anchor="middle" class="text-small">~/.hermes/state.db</text>
+
+    <rect x="230" y="350" width="140" height="60" class="box" rx="6"/>
+    <text x="300" y="375" text-anchor="middle" class="text-body">Config</text>
+    <text x="300" y="390" text-anchor="middle" class="text-small">config.yaml + .env</text>
+    <text x="300" y="405" text-anchor="middle" class="text-small">Precedence: env > yaml</text>
+
+    <rect x="70" y="430" width="140" height="60" class="box" rx="6"/>
+    <text x="140" y="455" text-anchor="middle" class="text-body">Sessions</text>
+    <text x="140" y="470" text-anchor="middle" class="text-small">SQLite + JSON</text>
+    <text x="140" y="485" text-anchor="middle" class="text-small">Prune/Optimize</text>
+
+    <rect x="230" y="430" width="140" height="60" class="box" rx="6"/>
+    <text x="300" y="455" text-anchor="middle" class="text-body">Skills</text>
+    <text x="300" y="470" text-anchor="middle" class="text-small">~/.hermes/skills/</text>
+    <text x="300" y="485" text-anchor="middle" class="text-small">Bundled + Community</text>
+
+    <rect x="70" y="510" width="300" height="30" class="box-accent" rx="6"/>
+    <text x="220" y="528" text-anchor="middle" class="text-small">Backup: hermes backup/import • Encrypted (age) • Offsite</text>
+  </g>
+
+  <!-- LAYER 5: TERMINAL BACKENDS -->
+  <g id="layer-term">
+    <rect x="50" y="580" width="1100" height="100" class="box-primary"/>
+    <text x="600" y="605" text-anchor="middle" class="text-title">TERMINAL BACKENDS (7)</text>
+
+    <g transform="translate(100, 630)">
+      <rect x="0" y="0" width="130" height="35" class="box" rx="4"/>
+      <text x="65" y="21" text-anchor="middle" class="text-body">local</text>
+    </g>
+    <g transform="translate(250, 630)">
+      <rect x="0" y="0" width="130" height="35" class="box-primary" rx="4"/>
+      <text x="65" y="21" text-anchor="middle" class="text-body">docker ✓</text>
+    </g>
+    <g transform="translate(400, 630)">
+      <rect x="0" y="0" width="130" height="35" class="box" rx="4"/>
+      <text x="65" y="21" text-anchor="middle" class="text-body">ssh</text>
+    </g>
+    <g transform="translate(550, 630)">
+      <rect x="0" y="0" width="130" height="35" class="box" rx="4"/>
+      <text x="65" y="21" text-anchor="middle" class="text-body">singularity</text>
+    </g>
+    <g transform="translate(700, 630)">
+      <rect x="0" y="0" width="130" height="35" class="box" rx="4"/>
+      <text x="65" y="21" text-anchor="middle" class="text-body">modal</text>
+    </g>
+    <g transform="translate(850, 630)">
+      <rect x="0" y="0" width="130" height="35" class="box" rx="4"/>
+      <text x="65" y="21" text-anchor="middle" class="text-body">daytona</text>
+    </g>
+    <g transform="translate(1000, 630)">
+      <rect x="0" y="0" width="130" height="35" class="box" rx="4"/>
+      <text x="65" y="21" text-anchor="middle" class="text-body">vercel_sandbox</text>
+    </g>
+    <text x="600" y="690" text-anchor="middle" class="text-small">Docker recommended for isolation • Container backends skip isolation by default</text>
+  </g>
+
+  <!-- Data Flow Arrows -->
+  <g class="arrow-primary">
+    <!-- UI to Core -->
+    <path d="M 400 180 L 450 180"/>
+    <path d="M 400 240 L 450 240"/>
+    <!-- Core to External -->
+    <path d="M 750 180 L 800 180"/>
+    <path d="M 750 240 L 800 240"/>
+    <path d="M 750 300 L 800 300"/>
+    <path d="M 750 380 L 800 380"/>
+    <!-- Core to Persistence -->
+    <path d="M 470 250 L 400 320"/>
+    <path d="M 470 320 L 400 380"/>
+    <!-- Core to Terminal -->
+    <path d="M 550 470 L 550 580"/>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(50, 710)">
+    <rect x="0" y="0" width="200" height="70" class="box" rx="6"/>
+    <text x="10" y="20" class="text-body">LEGEND</text>
+    <rect x="10" y="30" width="15" height="15" class="box-primary" rx="3"/>
+    <text x="30" y="42" class="text-body">Primary Component</text>
+    <rect x="10" y="50" width="15" height="15" class="box-accent" rx="3"/>
+    <text x="30" y="62" class="text-body">Security Critical</text>
+  </g>
+
+  <g transform="translate(300, 710)">
+    <rect x="0" y="0" width="250" height="70" class="box" rx="6"/>
+    <text x="10" y="20" class="text-body">KEY SPECS</text>
+    <text x="10" y="38" class="text-small">58 bundled skills • ~200 community</text>
+    <text x="10" y="52" class="text-small">5 cron formats • 7 backends • 28 gateways</text>
+    <text x="10" y="66" class="text-small">FTS5 memory • Honcho • MoA • delegate_task</text>
+  </g>
+
+  <g transform="translate(600, 710)">
+    <rect x="0" y="0" width="280" height="70" class="box" rx="6"/>
+    <text x="10" y="20" class="text-body">SECURITY DEFAULTS</text>
+    <text x="10" y="38" class="text-small">approvals.mode: smart • cron_mode: deny</text>
+    <text x="10" y="52" class="text-small">sandbox: restricted • allowlists required</text>
+    <text x="10" y="66" class="text-small">Tirith: enabled • .env: 600 perms</text>
+  </g>
+
+  <g transform="translate(950, 710)">
+    <rect x="0" y="0" width="200" height="70" class="box" rx="6"/>
+    <text x="10" y="20" class="text-body">COST TIERS</text>
+    <text x="10" y="38" class="text-small">Free: DeepSeek, Gemini Flash</text>
+    <text x="10" y="52" class="text-small">Cheap: OpenRouter (~$0.10-0.50/M)</text>
+    <text x="10" y="66" class="text-small">Aux compression: enabled by default</text>
+  </g>
+</svg>
